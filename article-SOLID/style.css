@@ -1,0 +1,236 @@
+/*reset*/
+* {
+    padding:0;
+    margin:0;
+    transition: all 0.3s ease
+}
+
+a {
+    list-style: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font-family: "Segoe UI";
+    background-color:aliceblue;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/*header*/
+header {
+    height:80px;
+    background-color:rgb(20, 8, 78);
+    padding:5px;
+}
+
+header a {
+    display:flex;
+    font-size:52px;
+    width:100%;
+    height:100%;
+    justify-content:center;
+}
+
+header a:hover {
+    font-size:72px;
+    font-weight:700;
+}
+
+/*footer*/
+footer {
+    height:150px;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    background-color: #264079;
+    color:#fff
+}
+
+footer div {
+    gap:30px
+}
+
+/*heading*/
+h1 {
+    padding:10px
+}
+
+h1 strong {
+    color:darkblue;
+}
+
+h2 {
+    text-decoration:underline
+}
+
+section h2, section p {
+    padding-bottom:10px;
+}
+
+/*section*/
+section {
+    margin:20px;
+    padding:30px;
+    border: solid 1px;
+    border-radius: 14px;
+    box-shadow:0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color:rgb(255, 255, 227);
+    opacity: 0.8;
+}
+
+section:hover {
+    background-color:rgb(255, 255, 172);
+}
+
+section:hover strong:hover {
+    color:darkviolet;
+    text-decoration:underline;
+}
+
+section:target {
+    opacity: 1;
+    background-color: #9dedf9;
+    border-left: 5px solid #007acc;
+    transform: scale(1.02);
+}
+
+/*flex-box*/
+.flex-row {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.flex-column {
+    display:flex;
+    flex-direction:column
+}
+
+/*letter*/
+.letter {
+    display:flex;
+    width:60px;
+    background-color:gold;
+    margin:5px;
+    align-items:center;
+    justify-content:center;
+}
+
+.letter:hover {
+    transform:scale(1.1);
+    background-color:darkorange;
+}
+
+/*social-link*/
+.social-link {
+    font-weight: 800
+}
+.social-link:hover {
+    font-weight: 900;
+    color:rgb(255, 230, 0)
+}
+
+/*form*/
+form {margin: 20px;
+    padding: 30px;
+    border: solid 1px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: rgb(255, 255, 227);
+    opacity: 0.8;
+    max-width: 500px;
+}
+
+form:hover {background-color: rgb(255, 255, 172);
+    opacity: 1;
+    transform: scale(1.01);
+}
+
+form h2 {
+    margin-bottom: 20px
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+form input:focus,form textarea:focus {
+    outline: none;
+    border-color: #007acc;
+    box-shadow: 0 0 8px rgba(0, 122, 204, 0.3);
+    background-color: #f0f8ff;
+}
+
+form input:hover, form textarea:hover {
+    border-color: #007acc;
+}
+
+form input::placeholder, form textarea::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+form input:required, form textarea:required {
+    border-left: 4px solid gold;
+}
+
+form input:required:valid, form textarea:required:valid {
+    border-left: 4px solid #28a745;
+}
+
+form button {
+    background-color: rgb(20, 8, 78);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: darkblue;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(20, 8, 78, 0.4);
+}
+
+form button:active {
+    transform: scale(0.98);
+}
+
+/*font: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/kbd*/
+kbd {
+    background-color:#ffff9c;
+    border-radius:3px;
+    border:1px solid #b4b4b4;
+    box-shadow:0 1px 1px rgb(0 0 0 / 0.2), 0 2px 0 0 rgb(255 255 255 / 0.7) inset;
+    color:#333333;
+    display:inline-block;
+    font-size:0.85em;
+    font-weight:bold;
+    line-height:1;
+    padding:2px 4px;
+    white-space:nowrap;
+}
+
+section:hover kbd {
+    background-color:#ffffff;
+}

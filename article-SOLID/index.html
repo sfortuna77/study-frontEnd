@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.O.L.I.D.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="flex-row">
+        
+        <nav class="flex-row">
+            <div class="letter"><a href="#single-responsability">S</a></div>
+            <div class="letter"><a href="#open-closed">O</a></div>
+            <div class="letter"><a href="#liskov-substitution">L</a></div>
+            <div class="letter"><a href="#interface-segregation">I</a></div>
+            <div class="letter"><a href="#dependency-inversion">D</a></div>
+        </nav>
+    </header>
+    <main>
+        <h1>Princípios <strong>SOLID</strong></h1>
+        <!--Article: Single Responsability-->
+        <a href="#single-responsability">
+            <section id="single-responsability">
+                <h2>Princípio da Responsabilidade Única <kbd>SRP</kbd></h2>
+                <p>O <strong>Single Responsibility Principle</strong> é o primeiro dos princípios SOLID e estabelece que uma classe deve ter apenas <strong>uma razão para mudar</strong>.</p>
+                <h3>O que significa?</h3>
+                <p>Cada classe deve ser responsável por apenas uma funcionalidade ou tarefa específica. Isso torna o código mais organizado, fácil de entender e manter.</p>
+            </section>
+        </a><hr>
+
+        <!--Article: Open/Closed-->
+        <a href="#open-closed">
+            <section id="open-closed">
+                <h2>Princípio Aberto/Fechado <kbd>OCP</kbd></h2>
+                <p>O <strong>Open/Closed Principle</strong> determina que as classes devem estar <strong>abertas para extensão, mas fechadas para modificação</strong>.</p>
+                <h3>O que significa?</h3>
+                <p>Você deve poder adicionar novas funcionalidades sem alterar o código existente. Isso é alcançado através de abstrações como interfaces e herança.</p>
+            </section>
+        </a><hr>
+
+        <!--Article: Liskov Substitution-->
+        <a href="#liskov-substitution">
+            <section id="liskov-substitution">
+                <h2>Princípio da Substituição de Liskov <kbd>LSP</kbd></h2>
+                <p>O <strong>Liskov Substitution Principle</strong> estabelece que objetos de uma classe derivada devem poder <strong>substituir objetos da classe base</strong> sem quebrar a funcionalidade.</p>
+                <h3>O que significa?</h3>
+                <p>Se você tem uma classe filha, ela deve funcionar perfeitamente no lugar da classe pai, mantendo o comportamento esperado.</p>
+            </section>
+        </a><hr>
+
+        <!--Article: Interface Segregation-->
+        <a href="#interface-segregation">
+            <section id="interface-segregation">
+                <h2>Princípio da Segregação de Interfaces <kbd>ISP</kbd></h2>
+                <p>O <strong>Interface Segregation Principle</strong> afirma que uma classe não deve ser forçada a implementar interfaces que <strong>não utiliza</strong>.</p>
+                <h3>O que significa?</h3>
+                <p>É melhor ter várias interfaces pequenas e específicas do que uma interface grande com muitos métodos desnecessários.</p>
+            </section>
+        </a><hr>
+
+        <!--Article: Dependency Inversion-->
+        <a href="#dependency-inversion">
+            <section id="dependency-inversion">
+                <h2>Princípio da Inversão de Dependência <kbd>DIP</kbd></h2>
+                <p>O <strong>Dependency Inversion Principle</strong> estabelece que módulos de alto nível não devem depender de módulos de baixo nível. <strong>Ambos devem depender de abstrações</strong>.</p>
+                <h3>O que significa?</h3>
+                <p>Em vez de depender de implementações concretas, suas classes devem depender de interfaces ou abstrações.</p>
+            </section>
+        </a><hr>
+        
+        <form action="mailto:sfortuna1977@gmail.com" method="GET" enctype="text/plain">
+            <h2>Contate-me</h2>
+            
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="subject">Assunto:</label>
+            <input type="text" id="subject" name="subject" placeholder="Assunto do email" value="Vi seu artigo referente ao SOLID, quero estudar com você (S2)">
+    
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="body" rows="4" placeholder="Sua mensagem aqui..." required></textarea>
+    
+            <button type="submit">Enviar Email</button>
+        </form><hr>
+        
+        <footer class="flex-column">
+            <div class="flex-row">
+                <a class="social-link" target="_blank" href="https://github.com/sfortuna77">GitHub</a>
+                <a class="social-link" target="_blank" href="https://www.linkedin.com/in/sergius-fortuna">Linkedin</a>
+                <a class="social-link" target="_blank" href="https://www.instagram.com/sergiusfortuna/">Instagram</a>
+            </div>
+            <p><strong>&copy; 2025 Sergius Fortuna</strong> - Todos os Direitos Reservados</p>
+        </footer>
+    </main>
+</body>
+</html>
