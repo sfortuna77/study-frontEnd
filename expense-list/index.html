@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Gastos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main>
+        <h1>Lista de Gastos</h1>
+        <form onsubmit="event.preventDefault(); addExpense();">
+            <div class="field">
+                <label for="expense-value">Digite o valor gasto:</label>
+                <input type="text" id="expense-value" placeholder="ex: 10,50" required>
+            </div>
+            <div class="field">
+                <label for="item-list">Selecione a categoria:</label>
+                <select id="item-list" required>
+                    <option value="">Selecione uma categoria</option>
+                </select>
+            </div>
+            <button type="submit">Adicionar</button>
+        </form>
+        
+        <div class="list" id="expense-list" style="display: none;">
+            <p class="separator"></p>
+            
+            <p class="total-row">
+                <span class="total">Total</span>
+                <span class="value" id="total">R\$ 0,00</span>
+            </p>
+        </div>
+    </main>
+</body>
+</html>
