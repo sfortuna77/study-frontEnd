@@ -1,0 +1,222 @@
+/* Paleta de Cores */
+:root {
+    --verde-escuro: #2d5016;
+    --verde-medio: #56ab2f;
+    --verde-claro: #a8e6cf;
+    
+    --branco: #ffffff;
+    
+    /* Paleta do IMC */
+    --azul-imc: #4ecdc4;
+    --laranja-imc: #ffa726;
+    --vermelho-imc: #ef5350;
+    
+    --transicao-padrao: all 0.3s ease;
+    --transicao-rapida: all 0.2s ease;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Geral */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--verde-medio) 0%, var(--verde-claro) 50%, var(--verde-claro) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 10px;
+}
+
+/* Container da calculadora */
+.container {
+    background: var(--branco);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(45, 80, 22, 0.15);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    border: 3px solid rgba(168, 230, 207, 0.3);
+    transition: var(--transicao-padrao);
+}
+
+.container:hover {
+    box-shadow: 0 20px 40px rgba(45, 80, 22, 0.2);
+    border: var(--verde-medio) 5px solid;
+}
+
+/* Titulo da Página */
+h1 {
+    color: var(--verde-escuro);
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+h1::before {
+    content: "🌿";
+    margin-right: 10px;
+    font-size: 0.8em;
+}
+
+/* Entrada de Dados */
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--verde-escuro);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--verde-claro);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: var(--transicao-padrao);
+    background-color: var(--branco);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--verde-medio);
+    background-color: var(--branco);
+    box-shadow: 0 0 0 3px rgba(86, 171, 47, 0.15);
+    transform: translateY(-2px);
+}
+
+.input-group input::placeholder {
+    color: var(--verde-medio);
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.input-group:hover input {
+    border-color: var(--verde-medio);
+    opacity: 0.8;
+}
+
+/* Botõoes */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin: 30px 0;
+    justify-content: center;
+}
+
+button {
+    flex: 1;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicao-padrao);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Botão Primário */
+.btn-primary {
+    background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
+    color: var(--branco);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, var(--verde-escuro), var(--verde-medio));
+    box-shadow: 0 10px 25px rgba(86, 171, 47, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+/* Botão Secundário */
+.btn-secondary {
+    background: linear-gradient(135deg, var(--verde-claro), var(--branco));
+    color: var(--verde-escuro);
+    border: 2px solid var(--verde-claro);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, var(--verde-medio), var(--verde-claro));
+    color: var(--branco);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(168, 230, 207, 0.4);
+}
+
+/* Box com Resultado */
+.result {
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, var(--branco), var(--verde-claro));
+    border-radius: 15px;
+    border-left: 5px solid var(--verde-medio);
+    box-shadow: 0 4px 12px rgba(86, 171, 47, 0.1);
+}
+
+.result p {
+    margin: 10px 0;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--verde-escuro);
+    line-height: 1.5;
+}
+
+.result strong {
+    color: var(--verde-medio);
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* Estados especiais para diferentes classificações de IMC */
+.result.baixo-peso {
+    border-left-color: var(--azul-imc);
+    background: linear-gradient(135deg, var(--branco), rgba(78, 205, 196, 0.1));
+}
+
+.result.baixo-peso strong {
+    color: var(--azul-imc);
+}
+
+.result.normal {
+    border-left-color: var(--verde-medio);
+    background: linear-gradient(135deg, var(--branco), var(--verde-claro));
+}
+
+.result.normal strong {
+    color: var(--verde-medio);
+}
+
+.result.sobrepeso {
+    border-left-color: var(--laranja-imc);
+    background: linear-gradient(135deg, var(--branco), rgba(255, 167, 38, 0.1));
+}
+
+.result.sobrepeso strong {
+    color: var(--laranja-imc);
+}
+
+.result.obesidade {
+    border-left-color: var(--vermelho-imc);
+    background: linear-gradient(135deg, var(--branco), rgba(239, 83, 80, 0.1));
+}
+
+.result.obesidade strong {
+    color: var(--vermelho-imc);
+}
