@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    height: 40px;
+    margin-top: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+/* Input válido (dentro do range) */
+input[type="number"]:in-range {
+    border-color: #28a745;
+}
+
+/* Input inválido (fora do range) */
+input[type="number"]:not(:in-range) {
+    border-color: red;
+}
+
+/* Mostra mensagem de erro quando input está fora do range */
+input[type="number"]:not(:in-range) + .error-message {
+    display: block;
+}
+
+/* Esconde mensagem de erro quando input está no range */
+input[type="number"]:in-range + .error-message {
+    display: none;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none; /* Escondida por padrão */
+    transition: opacity 0.3s ease;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+input[type="number"]:focus:not(:in-range) {
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+}
