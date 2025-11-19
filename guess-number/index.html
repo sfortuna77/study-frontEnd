@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivinhe o número</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main>
+        <h1>Adivinhe o Número</h1>
+        <p>Tente adivinhar o número que estou pensando entre 1 e 100!</p>
+        <p>Vamos jogar?</p>
+        <div>
+            <h2>Jogador</h2>
+            <div>
+                <label for="name">Qual o seu nome?</label>
+                <input type="text" id="name">
+                <label for="userGuess">Qual o seu palpite?</label>
+                <input type="text" id="userGuess">
+                <p id="guessRemaining">Faltam 7 chutes</p>
+                <button type="button" onclick="guessButton()">Chutar</button>
+            </div>
+        </div>
+        <div>
+            <button type="button" onclick="setNewGame()">Jogar novamente</button>
+        </div>
+        <div>
+            <h2>Faixa de acerto!</h2>
+            <ul>
+                <li>0</li>
+                <li>25</li>
+                <li>50</li>
+                <li>75</li>
+                <li>|||</li>
+                <li>100</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Ranking</h2>
+            <ul id="ranking">
+                <li>Player: acertou com 5 números em 130s</li>
+                <li>Player2: acertou com 2 números em 30s</li>
+                <li>Player3: não foi desta vez e gastou 200s</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
