@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 10px;
+    background-color:antiquewhite;
+}
+
+:root {
+    --main-color: #4ecdc4;
+}
+
+.box {
+    background-color:azure;
+    height: 70px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.box-1 {
+    border: 10px solid var(--main-color);
+}
+.box-2 {
+    border: 10px dashed var(--main-color);
+}
+.box-3 {
+    border: 10px double var(--main-color);
+}
+.box-4 {
+    border: 10px inset var(--main-color);
+}
+.box-5 {
+    border: 10px ridge var(--main-color);
+}
