@@ -1,103 +1,168 @@
-// Computer
-let computerNumber = 0;
+// Setting up the game parameters
+const smallestNumberGuess = 1;
+const highestNumberGuess = 100;
+const numberAttempt = 10;
 
-// User
-let userGuess = 0;
-let userTimeStart = 0;
-let userTimeEnd = 0;
-let userAttempt = 0;
-let hitMeter = [];
-let result = false;
-
-// General
-let ranking = [];
-let firstPlay = true;
-let smallestNumberGuess = 0;
-let highestNumberGuess = 100;
-let numberAttempt = 10;
-
-// Arrow Function
-const setRandomNumber = () => {
-    const min = smallestNumberGuess;
-    const max = highestNumberGuess;
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
+// Element Functions
 const getElementById = (id) => document.getElementById(id);
 const getElementValue = (id) => getElementById(id).value;
+const setElementText = (id, value) => getElementById(id).textContent = value;
+const setElementHTML = (id, value) => getElementById(id).innerHTML = value;
 
+// Random Number Generation
+let computerNumber = 0;
+const setRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const setRandomNumberDefault = () => setRandomNumber(smallestNumberGuess, highestNumberGuess);
+function setComputerNumber() { 
+    computerNumber = setRandomNumberDefault(); 
+}
+
+// User
+let hitMeter = [];
+let userAttempt = numberAttempt;
 const getUserName = () => getElementValue("name");
+const getUserGuess = () => Number.parseInt(getElementValue("userGuess")); 
 
-const getTimeSpent = () => userTimeEnd - userTimeStart;
-
-const setUserAttempt = (reset) => userAttempt = reset ? numberAttempt : userAttempt--;
-const getUserAttempt = () => userAttempt;
-
-const setGuessRemainingText = () => {
-    let manyGuessWord1 = getUserAttempt() !== 1 ? 'm' : '';
-    let manyGuessWord2 = getUserAttempt() !== 1 ? 's' : '';
-    getElementById("guessRemaining").textContent = `Falta${manyGuessWord1} ${getUserAttempt()} chute${manyGuessWord2}`;
+const setUserAttempt = () => {
+    userAttempt--;
+    const textRemaining = (userAttempt > 1) ? `Faltam ${userAttempt} tentativas` : 
+                         (userAttempt === 1) ? `Falta ${userAttempt} tentativa` : 
+                         "Sem tentativas restantes";
+    setElementText("guessRemaining", textRemaining);
 }
 
-// Functions Start Game
-function setComputerNumber () {
-    computerNumber = setRandomNumber();
+const resetUserAttempt = () => {
+    userAttempt = numberAttempt;
+    setElementText("guessRemaining", `Faltam ${userAttempt} tentativas`);
 }
 
+// Hint Guess
+let hintGuessMin = smallestNumberGuess;
+let hintGuessMax = highestNumberGuess;
+
+function updateHintGuess() {
+    const userGuess = getUserGuess();
+    if (userGuess < computerNumber) {
+        hintGuessMin = Math.max(hintGuessMin, userGuess + 1);
+    } else {
+        hintGuessMax = Math.min(hintGuessMax, userGuess - 1);
+    }
+    updateHintDisplay();
+}
+
+function updateHintDisplay() {
+    setElementHTML("hintGuess", `
+        <li class="hint-min">${hintGuessMin}</li>
+        <li class="hint-separator">|||</li>
+        <li class="hint-max">${hintGuessMax}</li>
+    `);
+}
+
+function resetHintGuess() {
+    hintGuessMin = smallestNumberGuess;
+    hintGuessMax = highestNumberGuess;
+    updateHintDisplay();
+}
+
+// Ranking
+let rankingPanel = [];
+
+const setRankingPanel = (newRanking) => rankingPanel.push(newRanking);
+
+const constructRankingPanel = () => {
+    let rankingList = "";
+    if (rankingPanel.length === 0) {
+        rankingList = '<li class="no-games">Nenhum jogo ainda</li>';
+    } else {
+        rankingPanel.forEach((ranking, index) => {
+            rankingList += `<li class="ranking-item">${index + 1}. ${ranking}</li>`;
+        });
+    }
+    setElementHTML("ranking", rankingList);
+}
+
+const setRankingVictory = (victory) => {
+    const playerName = getUserName() || "Anônimo";
+    const attemptsUsed = numberAttempt - userAttempt;
+    
+    if (victory) {
+        setRankingPanel(`${playerName}: ✅ Ganhou com ${attemptsUsed} tentativas`);
+    } else {
+        setRankingPanel(`${playerName}: ❌ Perdeu. O número era ${computerNumber}`);
+    }
+    constructRankingPanel();
+}
+
+// Validation
+function validateInput() {
+    const userName = getUserName().trim();
+    const userGuess = getUserGuess();
+    
+    if (!userName) {
+        alert("Por favor, digite seu nome!");
+        return false;
+    }
+    
+    if (isNaN(userGuess) || userGuess < smallestNumberGuess || userGuess > highestNumberGuess) {
+        alert(`Por favor, digite um número entre ${smallestNumberGuess} e ${highestNumberGuess}!`);
+        return false;
+    }
+    
+    return true;
+}
+
+// Start Game
 function setNewGame() {
     setComputerNumber();
-    userGuess = 0;
-    hitMeter = [];
-    userTimeStart = 0;
-    userTimeEnd = 0;
-    firstPlay = false;
-    result = false;
-    userAttempt = numberAttempt;
-    setGuessRemainingText();
-    console.log(`Número selecionado: ${computerNumber}`);
-    console.log(`Você tem ${numberAttempt} tentativas para acertar o número.`);
+    getElementById("userGuess").value = "";
+    setElementText("resultGame", "");
+    resetHintGuess();
+    resetUserAttempt();
 }
 
-// Function to register ranking
-function createRegisterRanking () {
-    let timeSpent = getTimeSpent();
-    let userName = getUserName();
-    let userAttempt = getUserAttempt();
-    if (result == true) {
-        return `${userName}: Ganhou com ${userAttempt} tentativas em ${timeSpent}s`
+// Guess Function
+function guessButton() {
+    if (!validateInput()) return;
+    
+    const userGuess = getUserGuess();
+    
+    if (userGuess === computerNumber) {
+        setVictory(true);
+    } else if (userAttempt <= 1) {
+        setUserAttempt();
+        setVictory(false);
     } else {
-        return `${userName}: Perdeu, quem sabe na próxima e gastou ${timeSpent}s`
+        setUserAttempt();
+        updateHintGuess();
+        
+        // Feedback adicional
+        if (userGuess < computerNumber) {
+            setElementText("resultGame", "📈 Muito baixo! Tente um número maior.");
+        } else {
+            setElementText("resultGame", "📉 Muito alto! Tente um número menor.");
+        }
     }
 }
 
-function addRegisterRanking () {
-    let itemList = document.createElement("li");
-    itemList.textContent = createRegisterRanking();
-    getElementById("ranking").appendChild(itemList);
-}
-
-// Function do Guess
-function guessButton () {
-    userAttempt--;
-    setGuessRemainingText();
-    userGuess = getElementById("userGuess").value;
-    if (userGuess == computerNumber) {
-        result = true;
-        addRegisterRanking();
-        return;
-    } else if (getUserAttempt() == 0) {
-        addRegisterRanking();
-        return;
-    } else if (userGuess > computerNumber) {
-        return;
-    } else if (userGuess < computerNumber) {
-        return;
+// Victory 
+const setVictory = (victory) => {
+    if (victory) {
+        setElementText("resultGame", "🎉 Parabéns! Você acertou o número!");
+    } else {
+        setElementText("resultGame", `😔 Que pena! O número era ${computerNumber}`);
     }
+    setRankingVictory(victory);
 }
 
 // Initialize game
 document.addEventListener("DOMContentLoaded", function() {
-    
+    setNewGame();
+    constructRankingPanel();
 });
 
-
+// Enter key support
+document.getElementById("userGuess").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        guessButton();
+    }
+});
