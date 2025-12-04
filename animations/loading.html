@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .c-loader {
+            border: 6px solid #e5e5e5;
+            border-top-color: #51d4db;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            animation: is-rotating 1s infinite;
+        }
+        @keyframes is-rotating {
+            to {transform: rotate(1turn);}
+        }
+    </style>
+</head>
+<body>
+    <div class="c-loader"></div>
+</body>
+</html>

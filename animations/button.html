@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button</title>
+    <style>
+        body {
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .c-button {
+            display: inline-flex;
+            font-family: sans-serif;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            justify-content: center;
+            background-color: brown;
+            color:#fff;
+            height: 60px;
+            width: 200px;
+            
+            &::before {
+                border: 9px solid brown;
+                bottom: 0; left: 0; right:0; top:0;
+                content: '';
+                position: absolute;
+            }
+
+            &:hover,
+            &:focus {
+                &::before {
+                    animation: is-rippling 1.75s cubic-bezier(0.33, 1, 0.68, 1) infinite;
+                }
+            }
+            &:active {
+                transform: translateY(2px);
+                &::before {animation: none;}
+            }
+        }
+        @keyframes is-rippling {
+            to {opacity: 0; transform: scale(1.14, 1.5);}
+        }
+    </style>
+</head>
+<body>
+    <div class="c-button">Cliqui Aqui</div>
+</body>
+</html>
